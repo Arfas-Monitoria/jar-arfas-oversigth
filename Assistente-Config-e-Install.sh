@@ -30,7 +30,7 @@ if [ $? -eq 0 ]
 		sleep 4
 		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Abrindo o jar...;"
 		sleep 4
-		ava -jar Arfas-Oversigth.jar
+		java -jar Arfas-Oversigth.jar
 			else
 			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não fazer o clone do JAR, até a próxima então!"
 		fi
