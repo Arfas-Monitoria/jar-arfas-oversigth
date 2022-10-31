@@ -1,5 +1,3 @@
-#!/bin/bash
-
 PURPLE='0;35'
 NC='\033[0m' 
 VERSAO=11
@@ -16,23 +14,34 @@ java -version
 if [ $? -eq 0 ]
 	then
 		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Você já tem o java instalado!!!;"
-		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Deseja fazer o clone do repositório JAR (S/N)?"
-		read inst
-	if [ \"$inst\" == \"S\" ]
-		then
-		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Clonando o JAR...;"
-		sleep 4
-		git clone https://github.com/Arfas-Monitoria/jar-arfas-oversigth.git
-		clear
-		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Jar foi clonado com sucesso!!;"
-		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Acessado a pasta...;"
-		cd jar-arfas-oversigth/
-		sleep 4
-		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Abrindo o jar...;"
-		sleep 4
-		java -jar Arfas-Oversigth.jar
+		if [ -d jar-arfas-oversigth/ ];
+			then
+				echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Verificamos aqui que você já tem nosso jar instalado nesse diretório!!!;"
+				echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Iremos atualizar ele pra ultima versão...;"
+				cd jar-arfas-oversigth/
+				git pull
+				clear
+				echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Jar atualizado na ultima versão!!;"
 			else
-			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não fazer o clone do JAR, até a próxima então!"
+				echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Verificamos aqui que você não tem o JAR instalado;"
+				echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Deseja fazer o clone do repositório JAR (S/N)?"
+				read inst
+				if [ \"$inst\" == \"S\" ]
+					then
+									echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Clonando o JAR...;"
+									sleep 4
+									git clone https://github.com/Arfas-Monitoria/jar-arfas-oversigth.git
+									clear
+									echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Jar foi clonado com sucesso!!;"
+									echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Acessado a pasta...;"
+									cd jar-arfas-oversigth/
+									sleep 4
+									echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Abrindo o jar...;"
+									sleep 4
+									java -jar Arfas-Oversigth.jar
+						else
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não fazer o clone do JAR, até a próxima então!"
+					fi
 		fi
 
 	else
@@ -61,24 +70,25 @@ if [ $? -eq 0 ]
 					read inst
 				if [ \"$inst\" == \"S\" ]
 					then
-					echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Clonando o JAR...;"
-					sleep 4
-					git clone https://github.com/Arfas-Monitoria/jar-arfas-oversigth.git
-					clear
-					echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Jar foi clonado com sucesso!!;"
-					echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Acessado a pasta...;"
-					cd jar-arfas-oversigth/
-					sleep 2
-					echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Abrindo o jar...;"
-					sleep 2
-					java -jar Arfas-Oversigth.jar
-					else
-					echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não fazer o clone do JAR, até a próxima então!"
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Clonando o JAR...;"
+						sleep 4
+						git clone https://github.com/Arfas-Monitoria/jar-arfas-oversigth.git
+						clear
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Jar foi clonado com sucesso!!;"
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Acessado a pasta...;"
+						cd jar-arfas-oversigth/
+						sleep 2
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Abrindo o jar...;"
+						sleep 2
+						java -jar Arfas-Oversigth.jar
+						else
+						echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não fazer o clone do JAR, até a próxima então!"
 					fi
 				fi
 		else 	
 		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não instalar o Java por enquanto, até a próxima então!"
 	fi
 fi
+
 
 
