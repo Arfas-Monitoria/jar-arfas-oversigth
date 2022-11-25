@@ -89,10 +89,18 @@ fi
 # Realizando algumas configurações do Docker
 echo "$(tput setaf 10)[Bot-Arfas-Assistente]:$(tput setaf 7) Agora vou realizar algumas configurações do seu Docker..."
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
 sudo systemctl enable docker
 sudo systemctl start docker
+
+sudo docker pull mysql:5.7
+
+sudo docker images
+
+variable_name=$(sudo docker run -d -p 3306:3306 --name ConteinerBD -e "MYSQL_DATABASE=arfas" -e "MYSQL_ROOT_PASSWORD=urubu100" arfas)
+
+$variable_name
+
+sudo docker exec -it $variable_name mysql -u root -p
 
 echo "$(tput setaf 10)[Bot-Arfas-Assistente]:$(tput setaf 7) Configurações realiazadas com sucesso :D"
 
